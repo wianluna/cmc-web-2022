@@ -38,7 +38,7 @@ CREATE TABLE Expeditions (
     expedition_id SERIAL,
     date_start timestamp,
     date_end timestamp,
-    members text[],
+    members text,
     description text,
     PRIMARY KEY (expedition_id)
 );
@@ -46,7 +46,8 @@ CREATE TABLE Expeditions (
 CREATE TABLE Mineral_Specimens (
     specimen_id SERIAL,
     possible_origin text DEFAULT NULL,
-    location_of_detection jsonb,
+    location text,
+    coordinates text,
     source text,
     expedition_id integer REFERENCES Expeditions ON DELETE RESTRICT,
     PRIMARY KEY (specimen_id)
