@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.url">jdbc:postgresql://127.0.0.1:8888/postgres</property> <!-- BD Mane -->
+        <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
+        <property name="connection.username">postgres</property> <!-- DB User -->
+        <property name="connection.password">1</property> <!-- DB Password -->
+        <property name="show_sql">true</property> <!-- Show SQL in console -->
+        <property name="format_sql">true</property> <!-- Show SQL formatted -->
+
+        <mapping class="entity.Classification" />
+        <mapping class="entity.PhysicalProperties" />
+        <mapping class="entity.Expeditions" />
+        <mapping class="entity.MineralSpecimens" />
+        <mapping class="entity.MineralSpecies" />
+        <mapping class="entity.SpecimensComposition" />
+
+    </session-factory>
+</hibernate-configuration>
