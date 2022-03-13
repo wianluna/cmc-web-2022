@@ -12,12 +12,12 @@
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
 
-        <mapping class="entity.Classification" />
-        <mapping class="entity.PhysicalProperties" />
-        <mapping class="entity.Expeditions" />
-        <mapping class="entity.MineralSpecimens" />
-        <mapping class="entity.MineralSpecies" />
-        <mapping class="entity.SpecimensComposition" />
+        <mapping class="models.Classification" />
+        <mapping class="models.PhysicalProperties" />
+        <mapping class="models.Expeditions" />
+        <mapping class="models.MineralSpecimens" />
+        <mapping class="models.MineralSpecies" />
+        <mapping class="models.SpecimensComposition" />
 
     </session-factory>
 </hibernate-configuration>

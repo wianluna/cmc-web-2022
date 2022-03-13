@@ -1,11 +1,6 @@
-package entity;
-
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
+package models;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity @IdClass(SpecimensCompositionKey.class)
 @Table(name = "Specimens_Composition")

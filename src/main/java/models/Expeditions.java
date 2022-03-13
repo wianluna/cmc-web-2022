@@ -1,4 +1,4 @@
-package entity;
+package models;
 
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
