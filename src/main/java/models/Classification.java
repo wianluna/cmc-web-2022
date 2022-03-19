@@ -1,13 +1,19 @@
 package models;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@FilterDef(name = "nameFilter", parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
-@Filter(name = "nameFilter", condition = "fcn like :nameParam")
+@FilterDefs({
+        @FilterDef(name = "typeFilter", parameters = @ParamDef(name = "typeParam", type = "java.lang.String")),
+        @FilterDef(name = "classFilter", parameters = @ParamDef(name = "classParam", type = "java.lang.String")),
+})
+@Filters({
+        @Filter(name = "typeFilter", condition = "type like :typeParam"),
+        @Filter(name = "classFilter", condition = "class like :typeParam")
+})
 
 @Entity
 @Table(name = "Classification")

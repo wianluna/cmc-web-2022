@@ -5,6 +5,7 @@ import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.query.Query;
+import utils.HibernateUtil;
 import utils.SessionUtil;
 
 import java.util.List;
@@ -49,6 +50,13 @@ public interface DAO<E> extends SessionUtil {
         session.remove(entity);
 
         closeTransactionSession();
+    }
+
+    default E getById(Class persistentClass, Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        E entity = (E) session.get(persistentClass, id);
+        session.close();
+        return entity;
     }
 
     default List<E> filter(Class persistentClass, Map<String,List> filters) {

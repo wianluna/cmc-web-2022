@@ -1,13 +1,26 @@
 package models;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@FilterDef(name = "nameFilter", parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
-@Filter(name = "nameFilter", condition = "fcn like :nameParam")
+@FilterDefs({
+        @FilterDef(name = "mineralNameFilter",
+                parameters = @ParamDef(name = "nameParam", type = "java.lang.String")),
+        @FilterDef(name = "mineralNameFilter",
+                parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
+})
+@Filters({
+        @Filter(name = "mineralNameFilter", condition="species_name like :nameParam"),
+        @Filter(name="mineralTypeFilter", condition="{c}.type like :typeParam", deduceAliasInjectionPoints = false,
+                aliases={@SqlFragmentAlias(alias="c", table="classification")}),
+        @Filter(name="mineralClassFilter", condition="{c}.class like :classParam", deduceAliasInjectionPoints = false,
+                aliases={@SqlFragmentAlias(alias="c", table="classification")}),
+        @Filter(name="mineralSubclassFilter", condition="{c}.subclass like :subclassParam", deduceAliasInjectionPoints = false,
+                aliases={@SqlFragmentAlias(alias="c", table="classification")}),
+})
 
 @Entity
 @Table(name = "Mineral_Species")
@@ -18,25 +31,25 @@ public class MineralSpecies {
     private Long id;
 
     @Column(name = "species_name")
-    private String species_name;
+    private String speciesName;
 
     @Column(name = "chemical_formula")
-    private String chemical_formula;
+    private String chemicalFormula;
 
     @Column(name = "origin")
     private String origin;
 
     @Column(name = "class_id")
-    private Long class_id;
+    private Long classId;
 
     public MineralSpecies() {}
 
-    public MineralSpecies(Long id, String species_name, String chemical_formula, String origin, Long class_id) {
+    public MineralSpecies(Long id, String speciesName, String chemicalFormula, String origin, Long classId) {
         this.id = id;
-        this.species_name = species_name;
-        this.chemical_formula = chemical_formula;
+        this.speciesName = speciesName;
+        this.chemicalFormula = chemicalFormula;
         this.origin = origin;
-        this.class_id = class_id;
+        this.classId = classId;
     }
 
     public Long getId() {
@@ -47,20 +60,20 @@ public class MineralSpecies {
         this.id = id;
     }
 
-    public String getSpecies_name() {
-        return species_name;
+    public String getSpeciesName() {
+        return speciesName;
     }
 
-    public void setSpecies_name(String species_name) {
-        this.species_name = species_name;
+    public void setSpeciesName(String species_name) {
+        this.speciesName = species_name;
     }
 
-    public String getChemical_formula() {
-        return chemical_formula;
+    public String getChemicalFormula() {
+        return chemicalFormula;
     }
 
-    public void setChemical_formula(String chemical_formula) {
-        this.chemical_formula = chemical_formula;
+    public void setChemicalFormula(String chemical_formula) {
+        this.chemicalFormula = chemical_formula;
     }
 
     public String getOrigin() {
@@ -71,11 +84,11 @@ public class MineralSpecies {
         this.origin = origin;
     }
 
-    public Long getClass_id() {
-        return class_id;
+    public Long getClassId() {
+        return classId;
     }
 
-    public void setClass_id(Long class_id) {
-        this.class_id = class_id;
+    public void setClassId(Long class_id) {
+        this.classId = class_id;
     }
 }

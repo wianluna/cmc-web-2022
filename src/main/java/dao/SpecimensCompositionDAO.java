@@ -6,7 +6,7 @@ import org.hibernate.query.Query;
 import utils.SessionUtilImpl;
 
 public class SpecimensCompositionDAO extends SessionUtilImpl implements DAO<SpecimensComposition>  {
-    public SpecimensComposition getById(Long species_id, Long specimen_id) {
+    public SpecimensComposition getById(Long specimen_id, Long species_id) {
         openTransactionSession();
 
         String sql = "SELECT * FROM Specimens_Composition WHERE species_id = :species_id AND specimen_id = :specimen_id";

@@ -1,15 +1,32 @@
 package models;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import java.sql.Date;
 
-@FilterDef(name = "nameFilter", parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
-@Filter(name = "nameFilter", condition = "fcn like :nameParam")
+@FilterDefs({
+        @FilterDef(name = "timeFilterStart",
+                parameters = {
+                        @ParamDef(name = "minParam", type = "java.sql.Date"),
+                        @ParamDef(name = "maxParam", type = "java.sql.Date")
+                }),
+        @FilterDef(name = "timeFilterEnd",
+                parameters = {
+                        @ParamDef(name = "minParam", type = "java.sql.Date"),
+                        @ParamDef(name = "maxParam", type = "java.sql.Date")
+                })
+})
+
+@Filters({
+        @Filter(name = "timeFilterStart",
+                condition = "date_start between :minParam and :maxParam"),
+        @Filter(name = "timeFilterEnd",
+                condition = "date_end between :minParam and :maxParam")
+})
 
 @Entity
 @Table(name = "Expeditions")

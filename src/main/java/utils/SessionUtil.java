@@ -3,35 +3,15 @@ package utils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class SessionUtil {
+public interface SessionUtil {
+    public Session getSession();
+    public Transaction getTransaction();
 
-    private Session session;
-    private Transaction transaction;
+    public Session openSession();
 
-    public Session getSession() {
-        return session;
-    }
+    public Session openTransactionSession();
 
-    public Transaction getTransaction() {
-        return transaction;
-    }
+    public void closeSession();
 
-    public Session openSession() {
-        return HibernateUtil.getSessionFactory().openSession();
-    }
-
-    public Session openTransactionSession() {
-        session = openSession();
-        transaction = session.beginTransaction();
-        return session;
-    }
-
-    public void closeSession() {
-        session.close();
-    }
-
-    public void closeTransactionSession() {
-        transaction.commit();
-        closeSession();
-    }
+    public void closeTransactionSession();
 }
