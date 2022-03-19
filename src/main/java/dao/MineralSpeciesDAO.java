@@ -1,21 +1,25 @@
 package dao;
 
 import models.MineralSpecies;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import utils.SessionUtilImpl;
 
-import java.util.List;
 
-public interface MineralSpeciesDAO {
+public class MineralSpeciesDAO extends SessionUtilImpl implements DAO<MineralSpecies> {
+    public MineralSpecies getById(Class persistentClass, Long id) {
+        openTransactionSession();
 
-    //create
-    void create(MineralSpecies entity);
+        String sql = "SELECT * FROM Mineral_Species WHERE species_id = :id";
 
-    //read
-    List<MineralSpecies> getAll();
-    MineralSpecies getById(Long id);
+        Session session = getSession();
+        Query query = session.createNativeQuery(sql).addEntity(MineralSpecies.class);
+        query.setParameter("id", id);
 
-    //update
-    void update(MineralSpecies entity);
+        MineralSpecies mineral = (MineralSpecies) query.getSingleResult();
 
-    //delete
-    void remove(MineralSpecies entity);
+        closeTransactionSession();
+
+        return mineral;
+    }
 }

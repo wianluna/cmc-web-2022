@@ -1,21 +1,25 @@
 package dao;
 
 import models.SpecimensComposition;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import utils.SessionUtilImpl;
 
-import java.util.List;
+public class SpecimensCompositionDAO extends SessionUtilImpl implements DAO<SpecimensComposition>  {
+    public SpecimensComposition getById(Long species_id, Long specimen_id) {
+        openTransactionSession();
 
-public interface SpecimensCompositionDAO {
+        String sql = "SELECT * FROM Specimens_Composition WHERE species_id = :species_id AND specimen_id = :specimen_id";
 
-    //create
-    void create(SpecimensComposition entity);
+        Session session = getSession();
+        Query query = session.createNativeQuery(sql).addEntity(SpecimensComposition.class);
+        query.setParameter("species_id", species_id);
+        query.setParameter("specimen_id", specimen_id);
 
-    //read
-    List<SpecimensComposition> getAll();
-    SpecimensComposition getById(Long species_id, Long specimen_id);
+        SpecimensComposition entity = (SpecimensComposition) query.getSingleResult();
 
-    //update
-    void update(SpecimensComposition entity);
+        closeTransactionSession();
 
-    //delete
-    void remove(SpecimensComposition entity);
+        return entity;
+    }
 }

@@ -1,21 +1,25 @@
 package dao;
 
 import models.Classification;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import utils.SessionUtilImpl;
 
-import java.util.List;
 
-public interface ClassificationDAO {
+public class ClassificationDAO extends SessionUtilImpl implements DAO<Classification> {
+    public Classification getById(Class persistentClass, Long id) {
+        openTransactionSession();
 
-    //create
-    void create(Classification entity);
+        String sql = "SELECT * FROM Classification WHERE class_id = :id";
 
-    //read
-    List<Classification> getAll();
-    Classification getById(Long id);
+        Session session = getSession();
+        Query query = session.createNativeQuery(sql).addEntity(Classification.class);
+        query.setParameter("id", id);
 
-    //update
-    void update(Classification entity);
+        Classification class_ = (Classification) query.getSingleResult();
 
-    //delete
-    void remove(Classification entity);
+        closeTransactionSession();
+
+        return class_;
+    }
 }

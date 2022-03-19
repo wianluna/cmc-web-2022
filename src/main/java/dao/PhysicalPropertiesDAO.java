@@ -1,20 +1,25 @@
 package dao;
 
 import models.PhysicalProperties;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import utils.SessionUtilImpl;
 
-import java.util.List;
 
-public interface PhysicalPropertiesDAO {
-    //create
-    void create(PhysicalProperties entity);
+public class PhysicalPropertiesDAO extends SessionUtilImpl implements DAO<PhysicalProperties> {
+    public PhysicalProperties getById(Class persistentClass, Long id) {
+        openTransactionSession();
 
-    //read
-    List<PhysicalProperties> getAll();
-    PhysicalProperties getById(Long id);
+        String sql = "SELECT * FROM Physical_Properties WHERE species_id = :id";
 
-    //update
-    void update(PhysicalProperties entity);
+        Session session = getSession();
+        Query query = session.createNativeQuery(sql).addEntity(PhysicalProperties.class);
+        query.setParameter("id", id);
 
-    //delete
-    void remove(PhysicalProperties entity);
+        PhysicalProperties expedition = (PhysicalProperties) query.getSingleResult();
+
+        closeTransactionSession();
+
+        return expedition;
+    }
 }

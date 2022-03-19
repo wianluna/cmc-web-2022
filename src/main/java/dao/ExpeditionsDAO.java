@@ -1,21 +1,25 @@
 package dao;
 
 import models.Expeditions;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import utils.SessionUtilImpl;
 
-import java.util.List;
 
-public interface ExpeditionsDAO {
+public class ExpeditionsDAO extends SessionUtilImpl implements DAO<Expeditions> {
+    public Expeditions getById(Class persistentClass, Long id) {
+        openTransactionSession();
 
-    //create
-    void create(Expeditions entity);
+        String sql = "SELECT * FROM Expeditions WHERE expedition_id = :id";
 
-    //read
-    List<Expeditions> getAll();
-    Expeditions getById(Long id);
+        Session session = getSession();
+        Query query = session.createNativeQuery(sql).addEntity(Expeditions.class);
+        query.setParameter("id", id);
 
-    //update
-    void update(Expeditions entity);
+        Expeditions expedition = (Expeditions) query.getSingleResult();
 
-    //delete
-    void remove(Expeditions entity);
+        closeTransactionSession();
+
+        return expedition;
+    }
 }
