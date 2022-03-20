@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
 
-        <property name="connection.url">jdbc:postgresql://127.0.0.1:8888/postgres</property> <!-- BD Mane -->
+        <property name="connection.url">jdbc:postgresql://127.0.0.1:8888/web_server_db</property> <!-- BD Mane -->
         <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
         <property name="connection.username">postgres</property> <!-- DB User -->
         <property name="connection.password">1</property> <!-- DB Password -->

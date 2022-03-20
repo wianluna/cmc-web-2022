@@ -32,7 +32,7 @@ import java.sql.Date;
 @Table(name = "Expeditions")
 public class Expeditions {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "expedition_id")
     private Long id;
 
@@ -47,6 +47,17 @@ public class Expeditions {
 
     @Column(name = "description")
     private String description;
+
+    public Expeditions() {
+    }
+
+    public Expeditions(Long id, Date dateStart, Date dateEnd, String members, String description) {
+        this.id = id;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.members = members;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;

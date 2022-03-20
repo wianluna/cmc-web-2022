@@ -1,5 +1,6 @@
 package dao;
 
+import models.SpecimensComposition;
 import org.hibernate.Criteria;
 import org.hibernate.Filter;
 import org.hibernate.Session;
@@ -24,13 +25,13 @@ public interface DAO<E> extends SessionUtil {
     }
 
     default List<E> getAll(Class persistentClass) {
-        openTransactionSession();
 
-        Session session = getSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("from " + persistentClass.getName());
-        List<E> result = query.list();
 
-        closeTransactionSession();
+        @SuppressWarnings("unchecked")
+        List<E> result = query.list();
+        session.close();
         return result;
     }
 
@@ -53,7 +54,7 @@ public interface DAO<E> extends SessionUtil {
     }
 
     default E getById(Class persistentClass, Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();;
         E entity = (E) session.get(persistentClass, id);
         session.close();
         return entity;

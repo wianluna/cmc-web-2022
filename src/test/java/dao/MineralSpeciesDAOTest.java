@@ -11,12 +11,12 @@ class MineralSpeciesDAOTest {
 
     private MineralSpeciesDAO mineralDAO = new MineralSpeciesDAO();
 
-    @Test
-    void getMineralSpeciesByIdTest() {
-        Long id = Long.valueOf(4);
-        MineralSpecies mineral = mineralDAO.getById(MineralSpecies.class, id);
-        Assert.assertEquals(mineral.getSpeciesName(), "опал");
-    }
+//    @Test
+//    void getMineralSpeciesByIdTest() {
+//        Long id = Long.valueOf(4);
+//        MineralSpecies mineral = mineralDAO.getById(MineralSpecies.class, id);
+//        Assert.assertEquals(mineral.getSpeciesName(), "опал");
+//    }
 
 //    @Test
 //    void updateTest() {
