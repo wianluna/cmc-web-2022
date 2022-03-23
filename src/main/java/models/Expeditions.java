@@ -59,6 +59,18 @@ public class Expeditions {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final Expeditions other = (Expeditions) obj;
+        return this.id.equals(other.id) &&
+                this.dateStart.equals(other.dateStart) &&
+                this.dateEnd.equals(other.dateEnd) &&
+                this.members.equals(other.members) &&
+                this.description.equals(other.description);
+    }
+
     public Long getId() {
         return id;
     }

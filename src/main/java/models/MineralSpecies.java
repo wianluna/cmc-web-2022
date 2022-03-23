@@ -6,21 +6,6 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@FilterDefs({
-//        @FilterDef(name = "mineralNameFilter",
-//                parameters = @ParamDef(name = "nameParam", type = "java.lang.String")),
-//        @FilterDef(name = "mineralNameFilter",
-//                parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
-//})
-//@Filters({
-//        @Filter(name = "mineralNameFilter", condition="species_name like :nameParam"),
-//        @Filter(name="mineralTypeFilter", condition="{c}.type like :typeParam", deduceAliasInjectionPoints = false,
-//                aliases={@SqlFragmentAlias(alias="c", table="classification")}),
-//        @Filter(name="mineralClassFilter", condition="{c}.class like :classParam", deduceAliasInjectionPoints = false,
-//                aliases={@SqlFragmentAlias(alias="c", table="classification")}),
-//        @Filter(name="mineralSubclassFilter", condition="{c}.subclass like :subclassParam", deduceAliasInjectionPoints = false,
-//                aliases={@SqlFragmentAlias(alias="c", table="classification")}),
-//})
 
 @Entity
 @Table(name = "Mineral_Species")
@@ -50,6 +35,18 @@ public class MineralSpecies {
         this.chemicalFormula = chemicalFormula;
         this.origin = origin;
         this.classId = classId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final MineralSpecies other = (MineralSpecies) obj;
+        return this.id.equals(other.id) &&
+                this.speciesName.equals(other.speciesName) &&
+                this.chemicalFormula.equals(other.chemicalFormula) &&
+                this.origin.equals(other.origin) &&
+                this.classId.equals(other.classId);
     }
 
     public Long getId() {

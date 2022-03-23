@@ -17,7 +17,7 @@ public class SpecimensComposition {
     private String inclusionType;
 
     @Column(name = "percentage")
-    private String percentage;
+    private float percentage;
 
     public Long getSpecimenId() {
         return specimenId;
@@ -43,11 +43,11 @@ public class SpecimensComposition {
         this.inclusionType = inclusionType;
     }
 
-    public String getPercentage() {
+    public float getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(String percentage) {
+    public void setPercentage(float percentage) {
         this.percentage = percentage;
     }
 
@@ -59,10 +59,21 @@ public class SpecimensComposition {
     public SpecimensComposition() {
     }
 
-    public SpecimensComposition(Long specimenId, Long speciesId, String inclusionType, String percentage) {
+    public SpecimensComposition(Long specimenId, Long speciesId, String inclusionType, float percentage) {
         this.specimenId = specimenId;
         this.speciesId = speciesId;
         this.inclusionType = inclusionType;
         this.percentage = percentage;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final SpecimensComposition other = (SpecimensComposition) obj;
+        return this.specimenId.equals(other.specimenId) &&
+                this.speciesId.equals(other.speciesId) &&
+                this.inclusionType == other.inclusionType &&
+                this.percentage == other.percentage;
     }
 }

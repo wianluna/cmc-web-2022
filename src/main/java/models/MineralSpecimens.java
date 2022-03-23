@@ -1,13 +1,22 @@
 package models;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@FilterDef(name = "nameFilter", parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
-@Filter(name = "nameFilter", condition = "fcn like :nameParam")
+@FilterDefs({
+        @FilterDef(name = "objectIdFilter", parameters = @ParamDef(name = "idParam", type = "Long")),
+        @FilterDef(name = "objectOriginFilter", parameters = @ParamDef(name = "originParam", type = "java.lang.String")),
+        @FilterDef(name = "objectSourceFilter", parameters = @ParamDef(name = "sourceParam", type = "java.lang.String"))
+})
+
+@Filters({
+        @Filter(name = "objectIdFilter", condition = "specimen_id = :idParam"),
+        @Filter(name = "objectOriginFilter", condition = "possible_origin like :originParam"),
+        @Filter(name = "objectSourceFilter", condition = "source like :sourceParam")
+})
 
 @Entity
 @Table(name = "Mineral_Specimens")
@@ -90,4 +99,17 @@ public class MineralSpecimens {
     }
 
     public MineralSpecimens() {}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final MineralSpecimens other = (MineralSpecimens) obj;
+        return this.id.equals(other.id) &&
+                this.possibleOrigin.equals(other.possibleOrigin) &&
+                this.location.equals(other.location) &&
+                this.coordinates.equals(other.coordinates) &&
+                this.source.equals(other.source) &&
+                this.expeditionId.equals(other.expeditionId);
+    }
 }

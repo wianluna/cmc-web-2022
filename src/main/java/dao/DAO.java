@@ -1,12 +1,10 @@
 package dao;
 
-import models.SpecimensComposition;
 import org.hibernate.Criteria;
 import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.query.Query;
-import utils.HibernateUtil;
 import utils.SessionUtil;
 
 import java.util.List;
@@ -25,13 +23,11 @@ public interface DAO<E> extends SessionUtil {
     }
 
     default List<E> getAll(Class persistentClass) {
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = openSession();
         Query query = session.createQuery("from " + persistentClass.getName());
 
-        @SuppressWarnings("unchecked")
         List<E> result = query.list();
-        session.close();
+        closeSession();
         return result;
     }
 
@@ -54,14 +50,15 @@ public interface DAO<E> extends SessionUtil {
     }
 
     default E getById(Class persistentClass, Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();;
+        Session session = openSession();;
         E entity = (E) session.get(persistentClass, id);
-        session.close();
+        closeSession();
         return entity;
     }
 
-    default List<E> filter(Class persistentClass, Map<String,List> filters) {
-        Session session = openSession();
+    default List<E> filter(Class persistentClass, Map<String, List> filters) {
+        openTransactionSession();
+        Session session = getSession();
         filters.entrySet().forEach(entry -> {
             String filterName = entry.getKey();
             List parameters = entry.getValue();
@@ -76,7 +73,7 @@ public interface DAO<E> extends SessionUtil {
         Query query = session.createQuery("from " + persistentClass.getName());
 
         List<E> result = query.list();
-        closeSession();
+        closeTransactionSession();
         return result;
     }
 

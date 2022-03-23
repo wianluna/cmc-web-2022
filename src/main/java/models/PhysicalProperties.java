@@ -6,8 +6,6 @@ import org.hibernate.annotations.ParamDef;
 
 import javax.persistence.*;
 
-@FilterDef(name = "nameFilter", parameters = @ParamDef(name = "nameParam", type = "java.lang.String"))
-@Filter(name = "nameFilter", condition = "fcn like :nameParam")
 
 @Entity
 @Table(name = "Physical_Properties")
@@ -88,5 +86,18 @@ public class PhysicalProperties {
         this.lustre = lustre;
         this.color = color;
         this.magnetism = magnetism;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final PhysicalProperties other = (PhysicalProperties) obj;
+        return this.id.equals(other.id) &&
+                this.latticeType.equals(other.latticeType) &&
+                this.hardness == other.hardness &&
+                this.lustre.equals(other.lustre) &&
+                this.color.equals(other.color) &&
+                this.magnetism.equals(other.magnetism);
     }
 }
