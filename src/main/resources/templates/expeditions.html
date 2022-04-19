@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Экспедиции</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header" ></header>
+
+<div class="container">
+    <form action="/expeditions/add">
+        <button type="submit" class="btn btn-success">Добавить экспедицию</button>
+    </form>
+</div>
+
+<div class="container mt-5">
+    <h3>Экспедиции</h3><br>
+    <div th:each="obj : ${objects}" class="alert alert-info mt-2">
+        <h5 th:text="'Начало: ' + ${obj.dateStart}"></h5>
+        <h5 th:text="'Конец: ' + ${obj.dateEnd}"></h5>
+        <p th:text="'Участники: ' + ${obj.members}"></p>
+        <p th:text="${obj.description}"></p>
+        <a th:href="'/expeditions/' + ${obj.id}">Редактировать</a>
+    </div>
+</div>
+</body>
+</html>
