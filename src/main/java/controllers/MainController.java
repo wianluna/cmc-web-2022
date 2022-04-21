@@ -39,6 +39,9 @@ public class MainController {
         List<MineralSpecimens> res = new ArrayList<>();
         if (!specimensId.isEmpty()) {
             MineralSpecimens object = objectDAO.getById(MineralSpecimens.class, Long.valueOf(specimensId));
+            if (object == null) {
+                return "redirect:/";
+            }
             res.add(object);
         } else {
             if (source.isEmpty()) {

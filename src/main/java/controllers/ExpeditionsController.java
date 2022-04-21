@@ -1,7 +1,7 @@
 package controllers;
 
+import com.google.common.collect.Lists;
 import dao.ExpeditionsDAO;
-import dao.MineralSpecimensDAO;
 import models.Expeditions;
 import models.MineralSpecimens;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import services.MineralSpecimensService;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ExpeditionsController {
@@ -22,6 +23,22 @@ public class ExpeditionsController {
     @GetMapping("/expeditions")
     public String expeditions(Model model) {
         List<Expeditions> objects = expeditionDao.getAll(Expeditions.class);
+        model.addAttribute("objects", objects);
+        return "expeditions";
+    }
+
+    @PostMapping("/expeditions")
+    public String expeditionsSearch(@RequestParam(name = "date_start", required = false) String dateStart,
+                                    @RequestParam(name = "date_end", required = false) String dateEnd,
+                                    Model model) {
+        List<Expeditions> objects = null;
+        if (!dateStart.isEmpty() && !dateEnd.isEmpty()) {
+            objects = expeditionDao.filter(Expeditions.class, Map.of("timeFilter",
+                    Lists.newArrayList(Date.valueOf(dateStart), Date.valueOf(dateEnd))));
+        } else {
+            return "redirect:/expeditions";
+        }
+
         model.addAttribute("objects", objects);
         return "expeditions";
     }

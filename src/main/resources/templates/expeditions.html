@@ -16,6 +16,13 @@
 
 <div class="container mt-5">
     <h3>Экспедиции</h3><br>
+
+    <form action="/expeditions" method="post">
+        <input type="text" pattern="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])" name="date_start" placeholder="Дата начала (гггг-мм-дд)" class="form-control"><br>
+        <input type="text" pattern="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])" name="date_end" placeholder="Дата конца (гггг-мм-дд)" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Поиск</button>
+    </form><br>
+
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
         <p><b>Дата начала: </b><span th:text="${obj.dateStart}"/></p>
         <p><b>Дата конца: </b><span th:text="${obj.dateEnd}"/></p>

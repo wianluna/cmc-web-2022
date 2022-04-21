@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import services.MineralSpeciesServices;
 import services.MineralSpecimensService;
 
 import java.util.List;
@@ -20,10 +21,19 @@ import java.util.List;
 public class MineralController {
     private MineralSpeciesDAO mineralDAO = new MineralSpeciesDAO();
     private PhysicalPropertiesDAO propertiesDAO = new PhysicalPropertiesDAO();
+    private MineralSpeciesServices mineralSpeciesServices = new MineralSpeciesServices();
     
     @GetMapping("/minerals")
     public String minerals(Model model) {
         List<MineralSpecies> objects = mineralDAO.getAll(MineralSpecies.class);
+        model.addAttribute("objects", objects);
+        return "minerals";
+    }
+
+    @PostMapping("/minerals")
+    public String mineralsSearch(@RequestParam(name = "species_name", required = false) String speciesName,
+                                 Model model) {
+        List<MineralSpecies> objects = mineralSpeciesServices.getBySpeciesName(speciesName);
         model.addAttribute("objects", objects);
         return "minerals";
     }

@@ -16,6 +16,12 @@
 
 <div class="container mt-5">
     <h3>Минералы</h3><br>
+
+    <form action="/minerals" method="post">
+        <input type="text" name="species_name" placeholder="Введите название минерала" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Поиск</button>
+    </form><br>
+
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
         <h5 th:text="${obj.speciesName}"></h5>
         <p><b>Химическая формула: </b><span th:text="${obj.chemicalFormula}"/></p>

@@ -11,10 +11,15 @@ import java.sql.Date;
 @FilterDefs({
         @FilterDef(name = "timeFilterStart",
                 parameters = {
+                        @ParamDef(name = "minParam", type = "java.time.LocalDate"),
+                        @ParamDef(name = "maxParam", type = "java.time.LocalDate")
+                }),
+        @FilterDef(name = "timeFilterEnd",
+                parameters = {
                         @ParamDef(name = "minParam", type = "java.sql.Date"),
                         @ParamDef(name = "maxParam", type = "java.sql.Date")
                 }),
-        @FilterDef(name = "timeFilterEnd",
+        @FilterDef(name = "timeFilter",
                 parameters = {
                         @ParamDef(name = "minParam", type = "java.sql.Date"),
                         @ParamDef(name = "maxParam", type = "java.sql.Date")
@@ -25,7 +30,10 @@ import java.sql.Date;
         @Filter(name = "timeFilterStart",
                 condition = "date_start between :minParam and :maxParam"),
         @Filter(name = "timeFilterEnd",
-                condition = "date_end between :minParam and :maxParam")
+                condition = "date_end between :minParam and :maxParam"),
+        @Filter(name = "timeFilter",
+                condition = "date_start between :minParam and :maxParam and " +
+                        "date_end between :minParam and :maxParam")
 })
 
 @Entity
