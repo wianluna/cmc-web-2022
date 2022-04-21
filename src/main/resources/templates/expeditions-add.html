@@ -11,8 +11,8 @@
 <div class="container mt-5 mb-5">
     <h3>Новая экспедиция</h3><br>
     <form action="/expeditions/add" method="post">
-        <input type="text" name="dateStart" placeholder="Дата начала" class="form-control"><br>
-        <input type="text" name="dateEnd" placeholder="Дата конца" class="form-control"><br>
+        <input type="text" pattern="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])" name="date_start" placeholder="Дата начала (гггг-мм-дд)" class="form-control"><br>
+        <input type="text" pattern="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])" name="date_end" placeholder="Дата конца (гггг-мм-дд)" class="form-control"><br>
         <input type="text" name="members" placeholder="Участники" class="form-control"><br>
         <textarea name="description" placeholder="Описание" class="form-control"></textarea><br>
         <button type="submit" class="btn btn-success">Сохранить</button>

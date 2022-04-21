@@ -54,8 +54,9 @@ CREATE TABLE Mineral_Specimens (
 );
 
 CREATE TABLE Specimens_Composition (
-    specimen_id integer NOT NULL references Mineral_Specimens,
-    species_id integer NOT NULL references Mineral_Species,
+    specimen_id integer NOT NULL references Mineral_Specimens ON DELETE CASCADE,
+    species_id integer NOT NULL references Mineral_Species ON DELETE CASCADE,
+    species_name text NOT NULL,
     inclusion_type text,
     percentage float,
     PRIMARY KEY (specimen_id, species_id)

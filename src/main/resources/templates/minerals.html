@@ -18,8 +18,8 @@
     <h3>Минералы</h3><br>
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
         <h5 th:text="${obj.speciesName}"></h5>
-        <p th:text="${obj.chemicalFormula}"></p>
-        <p th:text="'Происхождение: ' + ${obj.origin}"></p>
+        <p><b>Химическая формула: </b><span th:text="${obj.chemicalFormula}"/></p>
+        <p><b>Происхождение: </b><span th:text="${obj.origin}"/></p>
         <a th:href="'/minerals/' + ${obj.id}">Детальнее</a>
     </div>
 </div>

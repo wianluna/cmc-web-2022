@@ -13,11 +13,22 @@ public class SpecimensComposition {
     @Column(name = "species_id")
     private Long speciesId;
 
+    @Column(name = "species_name")
+    private String speciesName;
+
     @Column(name = "inclusion_type")
     private String inclusionType;
 
     @Column(name = "percentage")
     private float percentage;
+
+    public void setSpeciesName(String speciesName) {
+        this.speciesName = speciesName;
+    }
+
+    public String getSpeciesName() {
+        return speciesName;
+    }
 
     public Long getSpecimenId() {
         return specimenId;
@@ -59,9 +70,10 @@ public class SpecimensComposition {
     public SpecimensComposition() {
     }
 
-    public SpecimensComposition(Long specimenId, Long speciesId, String inclusionType, float percentage) {
+    public SpecimensComposition(Long specimenId, Long speciesId, String speciesName, String inclusionType, float percentage) {
         this.specimenId = specimenId;
         this.speciesId = speciesId;
+        this.speciesName = speciesName;
         this.inclusionType = inclusionType;
         this.percentage = percentage;
     }

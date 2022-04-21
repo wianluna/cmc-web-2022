@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование экспедиции</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header" ></header>
+
+<div class="container mt-5 mb-5">
+    <h3>Редактирование экспедиции</h3><br>
+    <form method="post">
+        <input type="text" pattern="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])" th:value="${object.dateStart}" name="date_start" placeholder="Дата начала" class="form-control"><br>
+        <input type="text" pattern="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])" th:value="${object.dateEnd}" name="date_end" placeholder="Дата конца" class="form-control"><br>
+        <input type="text" th:value="${object.members}" name="members" placeholder="Участники" class="form-control"><br>
+        <textarea name="description" placeholder="Описание" class="form-control" th:text="${object.description}"/><br>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>

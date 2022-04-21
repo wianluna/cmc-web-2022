@@ -51,11 +51,11 @@ INSERT INTO mineral_specimens (possible_origin, location, coordinates, source, e
 ('выветривание медных руд', 'Синюхинское месторождение, Алтайский край', '(51.83 86.75)', 'Геологический музей Алтайского края', NULL), -- малахит
 ('кристаллизация магмы', 'Ермаковское месторождение, Бурятия', '(51.41, 109.34)', 'Геологический музей Улан-Удэ', NULL); -- опал
 
-INSERT INTO specimens_composition (specimen_id, species_id, inclusion_type, percentage) VALUES
-(1, 1, 'вкрапления', 12.5),
-(2, 6, 'кристаллы', 22.8),
-(3, 3, NULL, 89.4),
-(4, 2, NULL, 91.1),
-(5, 3, NULL, 76.5),
-(6, 1, NULL, 90.7),
-(7, 4, NULL, 85.2);
+INSERT INTO specimens_composition (specimen_id, species_id, species_name, inclusion_type, percentage) VALUES
+(1, 1, 'малахит', 'вкрапления', 12.5),
+(2, 6, 'гипс', 'кристаллы', 22.8),
+(3, 3, 'кварц', NULL, 89.4),
+(4, 2, 'графит', NULL, 91.1),
+(5, 3, 'кварц', NULL, 76.5),
+(6, 1, 'малахит', NULL, 90.7),
+(7, 4, 'опал', NULL, 85.2);

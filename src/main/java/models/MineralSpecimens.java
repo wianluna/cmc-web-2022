@@ -22,9 +22,9 @@ import javax.persistence.Table;
 @Table(name = "Mineral_Specimens")
 public class MineralSpecimens {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "specimen_id")
-    private Long id;
+    private Long id = Long.valueOf(-1);
 
     @Column(name = "possible_origin")
     private String possibleOrigin;
@@ -33,7 +33,7 @@ public class MineralSpecimens {
     private String location;
 
     @Column(name = "coordinates")
-    private String coordinates;
+    private String coordinates = "1.1.1.1";
 
     @Column(name = "source")
     private String source;
@@ -91,6 +91,14 @@ public class MineralSpecimens {
 
     public MineralSpecimens(Long id, String possibleOrigin, String location, String coordinates, String source, Long expeditionId) {
         this.id = id;
+        this.possibleOrigin = possibleOrigin;
+        this.location = location;
+        this.coordinates = coordinates;
+        this.source = source;
+        this.expeditionId = expeditionId;
+    }
+
+    public MineralSpecimens(String possibleOrigin, String location, String coordinates, String source, Long expeditionId) {
         this.possibleOrigin = possibleOrigin;
         this.location = location;
         this.coordinates = coordinates;

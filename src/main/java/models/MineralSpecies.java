@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "Mineral_Species")
 public class MineralSpecies {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "species_id")
     private Long id;
 
@@ -31,6 +31,13 @@ public class MineralSpecies {
 
     public MineralSpecies(Long id, String speciesName, String chemicalFormula, String origin, Long classId) {
         this.id = id;
+        this.speciesName = speciesName;
+        this.chemicalFormula = chemicalFormula;
+        this.origin = origin;
+        this.classId = classId;
+    }
+
+    public MineralSpecies(String speciesName, String chemicalFormula, String origin, Long classId) {
         this.speciesName = speciesName;
         this.chemicalFormula = chemicalFormula;
         this.origin = origin;

@@ -9,16 +9,16 @@
 <header th:insert="blocks/header :: header" ></header>
 
 <div class="container mt-5 mb-5">
-    <h3>Новый минерал</h3><br>
+    <h3>Добавить минерал</h3><br>
     <form action="/minerals/add" method="post">
-        <input type="text" name="speciesName" placeholder="Название" class="form-control"><br>
-        <input type="text" name="chemicalFormula" placeholder="Химическая формула" class="form-control"><br>
+        <input type="text" name="species_name" placeholder="Название" class="form-control"><br>
+        <input type="text" name="chemical_formula" placeholder="Химическая формула" class="form-control"><br>
         <input type="text" name="origin" placeholder="Происхождение" class="form-control"><br>
-        <input type="text" name="latticeType" placeholder="Тип кристаллической решётки" class="form-control"><br>
+        <input type="text" name="lattice_type" placeholder="Тип кристаллической решётки" class="form-control"><br>
         <input type="text" name="hardness" placeholder="Твёрдость" class="form-control"><br>
         <input type="text" name="lustre" placeholder="Блеск" class="form-control"><br>
         <input type="text" name="color" placeholder="Цвет" class="form-control"><br>
-        <input type="text" name="magnetism" placeholder="Магнетизм" class="form-control"><br>
+        <input type="text" name="magnetism" placeholder="Магнитные свойства" class="form-control"><br>
         <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 </div>

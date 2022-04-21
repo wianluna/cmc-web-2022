@@ -16,10 +16,17 @@
 
 <div class="container mt-5">
     <h3>Образцы</h3><br>
+    <form action="/" method="post">
+        <input type="text" name="specimens_id" placeholder="Номер образца" class="form-control"><br>
+        <input type="text" name="possible_origin" placeholder="Возможное происхождение" class="form-control"><br>
+        <input type="text" name="source" placeholder="Источник" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Поиск</button>
+    </form><br>
+
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
         <h5 th:text="'Образец №' + ${obj.id}"></h5>
-        <p th:text="'Возможное происхождение: ' + ${obj.possibleOrigin}"></p>
-        <p th:text="'Источник: ' + ${obj.source}"></p>
+        <p><b>Возможное происхождение: </b><span th:text="${obj.possibleOrigin}"/></p>
+        <p><b>Источник: </b><span th:text="${obj.source}"/></p>
         <a th:href="'/specimens/' + ${obj.id}">Детальнее</a>
     </div>
 </div>

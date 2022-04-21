@@ -51,8 +51,7 @@ public class Expeditions {
     public Expeditions() {
     }
 
-    public Expeditions(Long id, Date dateStart, Date dateEnd, String members, String description) {
-        this.id = id;
+    public Expeditions(Date dateStart, Date dateEnd, String members, String description) {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.members = members;
