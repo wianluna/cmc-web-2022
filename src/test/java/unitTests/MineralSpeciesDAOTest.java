@@ -1,5 +1,6 @@
-package dao;
+package unitTests;
 
+import dao.MineralSpeciesDAO;
 import models.MineralSpecies;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

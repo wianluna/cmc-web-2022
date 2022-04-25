@@ -1,8 +1,6 @@
 package services;
 
-import dao.DAO;
 import models.MineralSpecimens;
-import models.SpecimensComposition;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import utils.SessionUtilImpl;

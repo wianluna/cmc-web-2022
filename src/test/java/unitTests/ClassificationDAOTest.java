@@ -1,5 +1,6 @@
-package dao;
+package unitTests;
 
+import dao.ClassificationDAO;
 import models.Classification;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

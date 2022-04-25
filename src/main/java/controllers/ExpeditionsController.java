@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import services.MineralSpecimensService;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,8 +34,7 @@ public class ExpeditionsController {
                                     Model model) {
         List<Expeditions> objects = null;
         if (!dateStart.isEmpty() && !dateEnd.isEmpty()) {
-            objects = expeditionDao.filter(Expeditions.class, Map.of("timeFilter",
-                    Lists.newArrayList(Date.valueOf(dateStart), Date.valueOf(dateEnd))));
+            objects = expeditionDao.getByDate(Date.valueOf(dateStart), Date.valueOf(dateEnd));
         } else {
             return "redirect:/expeditions";
         }
@@ -59,14 +59,15 @@ public class ExpeditionsController {
     public String expeditionsSpecimens(@PathVariable(value = "expedition_id") Long expeditionId,
                                      Model model) {
         MineralSpecimensService specimensService = new MineralSpecimensService();
+        List<MineralSpecimens> res = new ArrayList<>();;
 
         Expeditions object = expeditionDao.getById(Expeditions.class, expeditionId);
-        if (object == null) {
-            return "redirect:/expeditions";
+        if (object != null) {
+            List<MineralSpecimens> objects = specimensService.getByExpedition(expeditionId);
+            res.addAll(objects);
         }
 
-        List<MineralSpecimens> objects = specimensService.getByExpedition(expeditionId);
-        model.addAttribute("objects", objects);
+        model.addAttribute("objects", res);
         return "home";
     }
 

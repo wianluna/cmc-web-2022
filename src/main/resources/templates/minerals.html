@@ -28,6 +28,7 @@
         <p><b>Происхождение: </b><span th:text="${obj.origin}"/></p>
         <a th:href="'/minerals/' + ${obj.id}">Детальнее</a>
     </div>
+    <h5 th:if="${objects.empty}">Минералы не найдены</h5>
 </div>
 </body>
 </html>

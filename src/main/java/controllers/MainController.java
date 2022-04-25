@@ -2,7 +2,6 @@ package controllers;
 
 import dao.MineralSpecimensDAO;
 import dao.SpecimensCompositionDAO;
-import models.Composition;
 import models.MineralSpecimens;
 import models.SpecimensComposition;
 import org.springframework.stereotype.Controller;
@@ -39,10 +38,9 @@ public class MainController {
         List<MineralSpecimens> res = new ArrayList<>();
         if (!specimensId.isEmpty()) {
             MineralSpecimens object = objectDAO.getById(MineralSpecimens.class, Long.valueOf(specimensId));
-            if (object == null) {
-                return "redirect:/";
+            if (object != null) {
+                res.add(object);
             }
-            res.add(object);
         } else {
             if (source.isEmpty()) {
                 source = null;

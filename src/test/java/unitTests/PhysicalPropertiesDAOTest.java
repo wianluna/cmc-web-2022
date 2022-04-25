@@ -1,6 +1,7 @@
-package dao;
+package unitTests;
 
 import com.google.common.collect.Lists;
+import dao.PhysicalPropertiesDAO;
 import models.PhysicalProperties;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

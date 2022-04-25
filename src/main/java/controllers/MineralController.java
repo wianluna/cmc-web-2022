@@ -1,7 +1,6 @@
 package controllers;
 
 import dao.MineralSpeciesDAO;
-import dao.MineralSpecimensDAO;
 import dao.PhysicalPropertiesDAO;
 import models.MineralSpecies;
 import models.MineralSpecimens;

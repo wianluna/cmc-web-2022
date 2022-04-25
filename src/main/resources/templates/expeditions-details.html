@@ -9,7 +9,7 @@
 <header th:insert="blocks/header :: header" ></header>
 
 <div class="container mt-5">
-    <h3>Экспедиция</h3><br>
+    <h3 th:text="'Экспедиция №' + ${object.id}"></h3><br>
     <div>
         <form th:action="'/expeditions/' + ${object.id} + '/specimens'" method="post">
             <button class="btn btn-warning" type="submit">Образцы</button>

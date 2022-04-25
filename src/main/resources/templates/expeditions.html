@@ -24,12 +24,14 @@
     </form><br>
 
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
+        <h5 th:text="'Экспедиция №' + ${obj.id}"></h5>
         <p><b>Дата начала: </b><span th:text="${obj.dateStart}"/></p>
         <p><b>Дата конца: </b><span th:text="${obj.dateEnd}"/></p>
         <p><b>Участники: </b><span th:text="${obj.members}"/></p>
         <p th:text="${obj.description}"></p>
         <a th:href="'/expeditions/' + ${obj.id}">Детальнее</a>
     </div>
+    <h5 th:if="${objects.empty}">Экспедиции не найдены</h5>
 </div>
 </body>
 </html>
