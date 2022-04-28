@@ -14,8 +14,8 @@ public class ExpeditionsDAO extends SessionUtilImpl implements DAO<Expeditions> 
         List<Expeditions> expeditions = this.getAll(Expeditions.class);
 
         return expeditions.stream()
-                .filter(e -> e.getDateStart().before(end) && e.getDateStart().after(start)
-                        && e.getDateEnd().after(start) && e.getDateEnd().after(start))
+                .filter(e -> e.getDateStart().before(end) && (e.getDateStart().after(start) || e.getDateStart().equals(start))
+                        && (e.getDateEnd().before(end) || e.getDateEnd().equals(end)) && e.getDateEnd().after(start))
                 .collect(Collectors.toList());
     }
 }

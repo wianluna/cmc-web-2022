@@ -12,12 +12,12 @@
     <h3 th:text="'Экспедиция №' + ${object.id}"></h3><br>
     <div>
         <form th:action="'/expeditions/' + ${object.id} + '/specimens'" method="post">
-            <button class="btn btn-warning" type="submit">Образцы</button>
+            <button class="btn btn-warning" type="submit" id="btn_specimens">Образцы</button>
         </form><br><br>
         <p><b>Дата начала: </b><span th:text="${object.dateStart}"/></p>
         <p><b>Дата конца: </b><span th:text="${object.dateEnd}"/></p>
         <p><b>Участники: </b><span th:text="${object.members}"/></p>
-        <p><b>Описание: </b><span th:text="${object.description}"/></p>
+        <p><b>Описание: </b><span th:text="${object.description}" id="description"/></p>
         <a th:href="'/expeditions/' + ${object.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
         <form th:action="'/expeditions/' + ${object.id} + '/remove'" method="post">
             <button class="btn btn-danger" type="submit">Удалить</button>

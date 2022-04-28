@@ -23,12 +23,12 @@
     </form><br>
 
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
-        <h5 th:text="${obj.speciesName}"></h5>
+        <h5 id="obj_title" th:text="${obj.speciesName}"></h5>
         <p><b>Химическая формула: </b><span th:text="${obj.chemicalFormula}"/></p>
         <p><b>Происхождение: </b><span th:text="${obj.origin}"/></p>
         <a th:href="'/minerals/' + ${obj.id}">Детальнее</a>
     </div>
-    <h5 th:if="${objects.empty}">Минералы не найдены</h5>
+    <h5 id="no_obj" th:if="${objects.empty}">Минералы не найдены</h5>
 </div>
 </body>
 </html>
