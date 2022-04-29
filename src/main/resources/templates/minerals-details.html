@@ -9,7 +9,7 @@
 <header th:insert="blocks/header :: header" ></header>
 
 <div class="container mt-5">
-  <h3 th:text="${object.speciesName}"></h3><br>
+  <h3 id="obj_title" th:text="${object.speciesName}"></h3><br>
   <div>
     <form th:action="'/minerals/' + ${object.id} + '/specimens'" method="post">
       <button id="btn_specimens" class="btn btn-warning" type="submit">Образцы</button>
@@ -19,7 +19,7 @@
     <p><b>Тип кристаллической решётки: </b><span th:text="${properties.latticeType}"/></p>
     <p><b>Твёрдость: </b><span th:text="${properties.hardness}"/></p>
     <p><b>Блеск: </b><span th:text="${properties.lustre}"/></p>
-    <p><b>Цвет: </b><span th:text="${properties.color}"/></p>
+    <p><b>Цвет: </b><span id="color" th:text="${properties.color}"/></p>
     <p><b>Магнитные свойства: </b><span th:text="${properties.magnetism}"/></p>
     <a th:href="'/minerals/' + ${object.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
     <form th:action="'/minerals/' + ${object.id} + '/remove'" method="post">

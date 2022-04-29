@@ -204,5 +204,133 @@ public class SeleniumTests {
         ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
         jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.xpath("//*[contains(text(), 'Редактировать')]")).click();
+        driver.findElement(By.xpath("//*[@name = 'location']")).sendKeys(", левый берег");
+        driver.findElement(By.xpath("//*[contains(text(), 'Сохранить')]")).click();
+
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2010-06-25");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2010-07-22");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.id("btn_specimens")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        Assert.assertEquals(driver.findElement(By.id("location")).getText(), "Сызрань, левый берег");
+    }
+
+    @Test(priority = 9)
+    public void testEditCompositionSpecimen() {
+        driver.get(URL);
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2010-06-25");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2010-07-22");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+        WebElement ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.id("btn_specimens")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.xpath("//*[@name = 'species_name']")).sendKeys("малахит");
+        driver.findElement(By.xpath("//*[@name = 'species_id']")).sendKeys("1");
+        driver.findElement(By.xpath("//*[@name = 'inclusion_type']")).sendKeys("вкрапления");
+        driver.findElement(By.xpath("//*[@name = 'percentage']")).sendKeys("22.4");
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Добавить')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        wait.until(visibilityOfElementLocated(By.xpath("//*[contains(text(), 'малахит')]")));
+        wait.until(visibilityOfElementLocated(By.xpath("//*[contains(text(), 'вкрапления')]")));
+        wait.until(visibilityOfElementLocated(By.xpath("//*[contains(text(), '22.4')]")));
+
+        driver.findElement(By.xpath("//*[contains(text(), 'малахит')]")).click();
+        Assert.assertEquals(driver.findElement(By.id("obj_title")).getText(), "малахит");
+
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2010-06-25");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2010-07-22");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.id("btn_specimens")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.id("del_species_btn")).click();
+        wait.until(invisibilityOfElementLocated(By.xpath("//*[contains(text(), 'малахит')]")));
+    }
+
+    @Test(priority = 10)
+    public void testEditSpecies() {
+        driver.get(URL);
+        driver.findElement(By.xpath("//*[contains(text(), 'Минералы')]")).click();
+
+        driver.findElement(By.xpath("//*[@name = 'species_name']")).sendKeys("малахит");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+
+        Assert.assertEquals(driver.findElement(By.id("obj_title")).getText(), "малахит");
+        WebElement ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.xpath("//*[contains(text(), 'Редактировать')]")).click();
+
+        driver.findElement(By.xpath("//*[@name = 'color']")).sendKeys(", изумрудный");
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Сохранить')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.xpath("//*[@name = 'species_name']")).sendKeys("малахит");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+
+        Assert.assertEquals(driver.findElement(By.id("obj_title")).getText(), "малахит");
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        Assert.assertEquals(driver.findElement(By.id("color")).getText(), "зелёный, изумрудный");
+    }
+
+    @Test(priority = 11)
+    public void testDeleteSpecimens() {
+        driver.get(URL);
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2010-06-25");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2010-07-22");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+        WebElement ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.id("btn_specimens")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+        driver.findElement(By.xpath("//*[contains(text(), 'Удалить')]")).click();
+
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2010-06-25");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2010-07-22");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        driver.findElement(By.id("btn_specimens")).click();
+
+        Assert.assertEquals(driver.findElement(By.id("no_obj")).getText(), "Образцы не найдены");
     }
 }
