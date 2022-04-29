@@ -24,12 +24,12 @@
     </form><br>
 
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
-        <h5 id='obj_title' th:text="'Образец №' + ${obj.id}"></h5>
-        <p><b>Возможное происхождение: </b><span id='possible_origin' th:text="${obj.possibleOrigin}"/></p>
-        <p><b>Источник: </b><span id='source' th:text="${obj.source}"/></p>
+        <h5 id="obj_title" th:text="'Образец №' + ${obj.id}"></h5>
+        <p><b>Возможное происхождение: </b><span id="possible_origin" th:text="${obj.possibleOrigin}"/></p>
+        <p><b>Источник: </b><span id="source" th:text="${obj.source}"/></p>
         <a th:href="'/specimens/' + ${obj.id}">Детальнее</a>
     </div>
-    <h5 id='no_obj' th:if="${objects.empty}">Образцы не найдены</h5>
+    <h5 id="no_obj" th:if="${objects.empty}">Образцы не найдены</h5>
 </div>
 </body>
 </html>

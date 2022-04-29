@@ -96,7 +96,7 @@ public class SeleniumTests {
     }
 
     @Test(priority = 4)
-    public void testAddDeleteExpedition() {
+    public void testAddExpedition() {
         driver.get(URL);
         driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
         driver.findElement(By.xpath("//*[contains(text(), 'Добавить экспедицию')]")).click();
@@ -106,6 +106,47 @@ public class SeleniumTests {
         driver.findElement(By.xpath("//*[@name = 'members']")).sendKeys("Морковкин");
         driver.findElement(By.xpath("//*[@name = 'description']")).sendKeys("Тестовая экспедиция");
         driver.findElement(By.xpath("//*[contains(text(), 'Сохранить')]")).click();
+
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2022-04-01");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2022-04-26");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+
+        Assert.assertEquals(driver.findElement(By.id("date_start")).getText(), "2022-04-01");
+        Assert.assertEquals(driver.findElement(By.id("date_end")).getText(), "2022-04-26");
+    }
+
+    @Test(priority = 5)
+    public void testEditExpedition() {
+        driver.get(URL);
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
+
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2022-04-01");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2022-04-26");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+        WebElement ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+        Assert.assertEquals(driver.findElement(By.id("description")).getText(), "Тестовая экспедиция");
+        driver.findElement(By.xpath("//*[contains(text(), 'Редактировать')]")).click();
+
+        driver.findElement(By.xpath("//*[@name = 'members']")).sendKeys(", Помидоркин");
+        driver.findElement(By.xpath("//*[contains(text(), 'Сохранить')]")).click();
+
+        driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2022-04-01");
+        driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2022-04-26");
+        driver.findElement(By.xpath("//*[contains(text(), 'Поиск')]")).click();
+
+        ele = driver.findElement(By.xpath("//*[contains(text(), 'Детальнее')]"));
+        jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", ele);
+
+        Assert.assertEquals(driver.findElement(By.id("members")).getText(), "Морковкин, Помидоркин");
+    }
+
+    @Test(priority = 6)
+    public void testDeleteExpedition() {
+        driver.get(URL);
+        driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();
 
         driver.findElement(By.xpath("//*[@name = 'date_start']")).sendKeys("2022-04-01");
         driver.findElement(By.xpath("//*[@name = 'date_end']")).sendKeys("2022-04-26");
@@ -122,7 +163,7 @@ public class SeleniumTests {
         wait.until(visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Экспедиции не найдены')]")));
     }
 
-    @Test(priority = 5)
+    @Test(priority = 7)
     public void testAddSpecimen() {
         driver.get(URL);
         driver.findElement(By.xpath("//*[contains(text(), 'Добавить образец')]")).click();
@@ -148,7 +189,7 @@ public class SeleniumTests {
         wait.until(visibilityOfElementLocated(By.xpath("//*[contains(text(), 'источник тестового образца')]")));
     }
 
-    @Test(priority = 6)
+    @Test(priority = 8)
     public void testEditSpecimen() {
         driver.get(URL);
         driver.findElement(By.xpath("//*[contains(text(), 'Экспедиции')]")).click();

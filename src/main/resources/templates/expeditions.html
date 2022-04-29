@@ -25,10 +25,10 @@
 
     <div th:each="obj : ${objects}" class="alert alert-info mt-2">
         <h5 id="obj_title" th:text="'Экспедиция №' + ${obj.id}"></h5>
-        <p><b>Дата начала: </b><span th:text="${obj.dateStart}"/></p>
-        <p><b>Дата конца: </b><span th:text="${obj.dateEnd}"/></p>
-        <p><b>Участники: </b><span th:text="${obj.members}"/></p>
-        <p th:text="${obj.description}"></p>
+        <p><b>Дата начала: </b><span id="date_start" th:text="${obj.dateStart}"/></p>
+        <p><b>Дата конца: </b><span id="date_end" th:text="${obj.dateEnd}"/></p>
+        <p><b>Участники: </b><span id="members" th:text="${obj.members}"/></p>
+        <p id="description" th:text="${obj.description}"></p>
         <a th:href="'/expeditions/' + ${obj.id}" id="more">Детальнее</a>
     </div>
     <h5 id="no_obj" th:if="${objects.empty}">Экспедиции не найдены</h5>

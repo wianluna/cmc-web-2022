@@ -14,10 +14,10 @@
         <form th:action="'/expeditions/' + ${object.id} + '/specimens'" method="post">
             <button class="btn btn-warning" type="submit" id="btn_specimens">Образцы</button>
         </form><br><br>
-        <p><b>Дата начала: </b><span th:text="${object.dateStart}"/></p>
-        <p><b>Дата конца: </b><span th:text="${object.dateEnd}"/></p>
-        <p><b>Участники: </b><span th:text="${object.members}"/></p>
-        <p><b>Описание: </b><span th:text="${object.description}" id="description"/></p>
+        <p><b>Дата начала: </b><span id="date_start" th:text="${object.dateStart}"/></p>
+        <p><b>Дата конца: </b><span id="date_end" th:text="${object.dateEnd}"/></p>
+        <p><b>Участники: </b><span id="members" th:text="${object.members}"/></p>
+        <p><b>Описание: </b><span id="description" th:text="${object.description}"/></p>
         <a th:href="'/expeditions/' + ${object.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
         <form th:action="'/expeditions/' + ${object.id} + '/remove'" method="post">
             <button class="btn btn-danger" type="submit">Удалить</button>

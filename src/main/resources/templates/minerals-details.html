@@ -12,7 +12,7 @@
   <h3 th:text="${object.speciesName}"></h3><br>
   <div>
     <form th:action="'/minerals/' + ${object.id} + '/specimens'" method="post">
-      <button class="btn btn-warning" type="submit">Образцы</button>
+      <button id="btn_specimens" class="btn btn-warning" type="submit">Образцы</button>
     </form><br>
     <p><b>Химическая формула: </b><span th:text="${object.chemicalFormula}"/></p>
     <p><b>Происхождение: </b><span th:text="${object.origin}"/></p>
