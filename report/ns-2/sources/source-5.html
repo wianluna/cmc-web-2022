@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PhysicalProperties</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">models</a>
+</div>
+
+<h1>Coverage Summary for Class: PhysicalProperties (models)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PhysicalProperties</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (3/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    35,7%
+  </span>
+  <span class="absValue">
+    (10/28)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PhysicalProperties$HibernateProxy$2Qy6a5EI</td>
+  </tr>
+  <tr>
+    <td class="name">PhysicalProperties$HibernateProxy$BoSRTSEI</td>
+  </tr>
+  <tr>
+    <td class="name">PhysicalProperties$HibernateProxy$kdhrIeMY</td>
+  </tr>
+  <tr>
+    <td class="name">PhysicalProperties$HibernateProxy$RGKqAO4d</td>
+  </tr>
+  <tr>
+    <td class="name">PhysicalProperties$HibernateProxy$VWgmIMlZ</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (3/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    35,7%
+  </span>
+  <span class="absValue">
+    (10/28)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package models;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import org.hibernate.annotations.Filter;
+<i class="no-highlight">4</i>&nbsp;import org.hibernate.annotations.FilterDef;
+<i class="no-highlight">5</i>&nbsp;import org.hibernate.annotations.ParamDef;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import javax.persistence.*;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;@FilterDef(name = &quot;nameFilter&quot;, parameters = @ParamDef(name = &quot;nameParam&quot;, type = &quot;java.lang.String&quot;))
+<i class="no-highlight">10</i>&nbsp;@Filter(name = &quot;nameFilter&quot;, condition = &quot;fcn like :nameParam&quot;)
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;@Entity
+<i class="no-highlight">13</i>&nbsp;@Table(name = &quot;Physical_Properties&quot;)
+<i class="no-highlight">14</i>&nbsp;public class PhysicalProperties {
+<i class="no-highlight">15</i>&nbsp;    @Id
+<i class="no-highlight">16</i>&nbsp;    @Column(name = &quot;species_id&quot;)
+<i class="no-highlight">17</i>&nbsp;    private Long id;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    @Column(name = &quot;lattice_type&quot;)
+<i class="no-highlight">20</i>&nbsp;    private String latticeType;
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @Column(name = &quot;hardness&quot;)
+<i class="no-highlight">23</i>&nbsp;    private float hardness;
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;    @Column(name = &quot;lustre&quot;)
+<i class="no-highlight">26</i>&nbsp;    private String lustre;
+<i class="no-highlight">27</i>&nbsp;
+<i class="no-highlight">28</i>&nbsp;    @Column(name = &quot;color&quot;)
+<i class="no-highlight">29</i>&nbsp;    private String color;
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    @Column(name = &quot;magnetism&quot;)
+<i class="no-highlight">32</i>&nbsp;    private String magnetism;
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    public Long getId() {
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        return id;</b>
+<i class="no-highlight">36</i>&nbsp;    }
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;    public void setId(Long id) {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        this.id = id;</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    public String getLatticeType() {
+<b class="nc"><i class="no-highlight">43</i>&nbsp;        return latticeType;</b>
+<i class="no-highlight">44</i>&nbsp;    }
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    public void setLatticeType(String latticeType) {
+<b class="nc"><i class="no-highlight">47</i>&nbsp;        this.latticeType = latticeType;</b>
+<i class="no-highlight">48</i>&nbsp;    }
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    public float getHardness() {
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        return hardness;</b>
+<i class="no-highlight">52</i>&nbsp;    }
+<i class="no-highlight">53</i>&nbsp;
+<i class="no-highlight">54</i>&nbsp;    public void setHardness(float hardness) {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        this.hardness = hardness;</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    public String getLustre() {
+<b class="nc"><i class="no-highlight">59</i>&nbsp;        return lustre;</b>
+<i class="no-highlight">60</i>&nbsp;    }
+<i class="no-highlight">61</i>&nbsp;
+<i class="no-highlight">62</i>&nbsp;    public void setLustre(String lustre) {
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        this.lustre = lustre;</b>
+<i class="no-highlight">64</i>&nbsp;    }
+<i class="no-highlight">65</i>&nbsp;
+<i class="no-highlight">66</i>&nbsp;    public String getColor() {
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        return color;</b>
+<i class="no-highlight">68</i>&nbsp;    }
+<i class="no-highlight">69</i>&nbsp;
+<i class="no-highlight">70</i>&nbsp;    public void setColor(String color) {
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        this.color = color;</b>
+<i class="no-highlight">72</i>&nbsp;    }
+<i class="no-highlight">73</i>&nbsp;
+<i class="no-highlight">74</i>&nbsp;    public String getMagnetism() {
+<b class="nc"><i class="no-highlight">75</i>&nbsp;        return magnetism;</b>
+<i class="no-highlight">76</i>&nbsp;    }
+<i class="no-highlight">77</i>&nbsp;
+<i class="no-highlight">78</i>&nbsp;    public void setMagnetism(String magnetism) {
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        this.magnetism = magnetism;</b>
+<i class="no-highlight">80</i>&nbsp;    }
+<i class="no-highlight">81</i>&nbsp;
+<b class="fc"><i class="no-highlight">82</i>&nbsp;    public PhysicalProperties() {}</b>
+<i class="no-highlight">83</i>&nbsp;
+<b class="nc"><i class="no-highlight">84</i>&nbsp;    public PhysicalProperties(Long id, String latticeType, float hardness, String lustre, String color, String magnetism) {</b>
+<b class="nc"><i class="no-highlight">85</i>&nbsp;        this.id = id;</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;        this.latticeType = latticeType;</b>
+<b class="nc"><i class="no-highlight">87</i>&nbsp;        this.hardness = hardness;</b>
+<b class="nc"><i class="no-highlight">88</i>&nbsp;        this.lustre = lustre;</b>
+<b class="nc"><i class="no-highlight">89</i>&nbsp;        this.color = color;</b>
+<b class="nc"><i class="no-highlight">90</i>&nbsp;        this.magnetism = magnetism;</b>
+<i class="no-highlight">91</i>&nbsp;    }
+<i class="no-highlight">92</i>&nbsp;
+<i class="no-highlight">93</i>&nbsp;    @Override
+<i class="no-highlight">94</i>&nbsp;    public boolean equals(Object obj) {
+<b class="fc"><i class="no-highlight">95</i>&nbsp;        if (obj == null) { return false; }</b>
+<b class="fc"><i class="no-highlight">96</i>&nbsp;        if (obj.getClass() != this.getClass()) { return false; }</b>
+<b class="fc"><i class="no-highlight">97</i>&nbsp;        final PhysicalProperties other = (PhysicalProperties) obj;</b>
+<b class="fc"><i class="no-highlight">98</i>&nbsp;        return this.id.equals(other.id) &amp;&amp;</b>
+<b class="fc"><i class="no-highlight">99</i>&nbsp;                this.latticeType.equals(other.latticeType) &amp;&amp;</b>
+<i class="no-highlight">100</i>&nbsp;                this.hardness == other.hardness &amp;&amp;
+<b class="fc"><i class="no-highlight">101</i>&nbsp;                this.lustre.equals(other.lustre) &amp;&amp;</b>
+<b class="fc"><i class="no-highlight">102</i>&nbsp;                this.color.equals(other.color) &amp;&amp;</b>
+<b class="fc"><i class="no-highlight">103</i>&nbsp;                this.magnetism.equals(other.magnetism);</b>
+<i class="no-highlight">104</i>&nbsp;    }
+<i class="no-highlight">105</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-23 12:49</div>
+</div>
+</body>
+</html>

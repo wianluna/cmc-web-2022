@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpecimensComposition</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">models</a>
+</div>
+
+<h1>Coverage Summary for Class: SpecimensComposition (models)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SpecimensComposition</td>
+<td class="coverageStat">
+  <span class="percent">
+    16,7%
+  </span>
+  <span class="absValue">
+    (2/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    9,1%
+  </span>
+  <span class="absValue">
+    (2/22)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SpecimensComposition$HibernateProxy$3NDguAhw</td>
+  </tr>
+  <tr>
+    <td class="name">SpecimensComposition$HibernateProxy$a2m08QqO</td>
+  </tr>
+  <tr>
+    <td class="name">SpecimensComposition$HibernateProxy$forC22G4</td>
+  </tr>
+  <tr>
+    <td class="name">SpecimensComposition$HibernateProxy$GOBFHrh8</td>
+  </tr>
+  <tr>
+    <td class="name">SpecimensComposition$HibernateProxy$VKoFJBUD</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    16,7%
+  </span>
+  <span class="absValue">
+    (2/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    9,1%
+  </span>
+  <span class="absValue">
+    (2/22)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package models;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import javax.persistence.*;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;@Entity @IdClass(SpecimensCompositionKey.class)
+<i class="no-highlight">6</i>&nbsp;@Table(name = &quot;Specimens_Composition&quot;)
+<i class="no-highlight">7</i>&nbsp;public class SpecimensComposition {
+<i class="no-highlight">8</i>&nbsp;    @Id
+<i class="no-highlight">9</i>&nbsp;    @Column(name = &quot;specimen_id&quot;)
+<i class="no-highlight">10</i>&nbsp;    private Long specimenId;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;    @Id
+<i class="no-highlight">13</i>&nbsp;    @Column(name = &quot;species_id&quot;)
+<i class="no-highlight">14</i>&nbsp;    private Long speciesId;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    @Column(name = &quot;inclusion_type&quot;)
+<i class="no-highlight">17</i>&nbsp;    private String inclusionType;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    @Column(name = &quot;percentage&quot;)
+<i class="no-highlight">20</i>&nbsp;    private float percentage;
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    public Long getSpecimenId() {
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        return specimenId;</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    public void setSpecimenId(Long specimenId) {
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        this.specimenId = specimenId;</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    public Long getSpeciesId() {
+<b class="nc"><i class="no-highlight">31</i>&nbsp;        return speciesId;</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    public void setSpeciesId(Long speciesId) {
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        this.speciesId = speciesId;</b>
+<i class="no-highlight">36</i>&nbsp;    }
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;    public String getInclusionType() {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        return inclusionType;</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    public void setInclusionType(String inclusionType) {
+<b class="nc"><i class="no-highlight">43</i>&nbsp;        this.inclusionType = inclusionType;</b>
+<i class="no-highlight">44</i>&nbsp;    }
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    public float getPercentage() {
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        return percentage;</b>
+<i class="no-highlight">48</i>&nbsp;    }
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    public void setPercentage(float percentage) {
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        this.percentage = percentage;</b>
+<i class="no-highlight">52</i>&nbsp;    }
+<i class="no-highlight">53</i>&nbsp;
+<b class="nc"><i class="no-highlight">54</i>&nbsp;    public SpecimensComposition(Long specimenId, Long speciesId) {</b>
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        this.specimenId = specimenId;</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        this.speciesId = speciesId;</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<b class="fc"><i class="no-highlight">59</i>&nbsp;    public SpecimensComposition() {</b>
+<i class="no-highlight">60</i>&nbsp;    }
+<i class="no-highlight">61</i>&nbsp;
+<b class="nc"><i class="no-highlight">62</i>&nbsp;    public SpecimensComposition(Long specimenId, Long speciesId, String inclusionType, float percentage) {</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        this.specimenId = specimenId;</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        this.speciesId = speciesId;</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        this.inclusionType = inclusionType;</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        this.percentage = percentage;</b>
+<i class="no-highlight">67</i>&nbsp;    }
+<i class="no-highlight">68</i>&nbsp;
+<i class="no-highlight">69</i>&nbsp;    @Override
+<i class="no-highlight">70</i>&nbsp;    public boolean equals(Object obj) {
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        if (obj == null) { return false; }</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        if (obj.getClass() != this.getClass()) { return false; }</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;        final SpecimensComposition other = (SpecimensComposition) obj;</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        return this.specimenId.equals(other.specimenId) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;                this.speciesId.equals(other.speciesId) &amp;&amp;</b>
+<i class="no-highlight">76</i>&nbsp;                this.inclusionType == other.inclusionType &amp;&amp;
+<i class="no-highlight">77</i>&nbsp;                this.percentage == other.percentage;
+<i class="no-highlight">78</i>&nbsp;    }
+<i class="no-highlight">79</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-23 12:49</div>
+</div>
+</body>
+</html>

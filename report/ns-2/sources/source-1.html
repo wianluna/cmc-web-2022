@@ -1,0 +1,212 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Classification</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">models</a>
+</div>
+
+<h1>Coverage Summary for Class: Classification (models)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Classification</td>
+<td class="coverageStat">
+  <span class="percent">
+    9,1%
+  </span>
+  <span class="absValue">
+    (1/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5%
+  </span>
+  <span class="absValue">
+    (1/20)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Classification$HibernateProxy$A7KG9jZH</td>
+  </tr>
+  <tr>
+    <td class="name">Classification$HibernateProxy$jEJavwvP</td>
+  </tr>
+  <tr>
+    <td class="name">Classification$HibernateProxy$PQx2KegZ</td>
+  </tr>
+  <tr>
+    <td class="name">Classification$HibernateProxy$qmKYXUsj</td>
+  </tr>
+  <tr>
+    <td class="name">Classification$HibernateProxy$xGBhnMvn</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    9,1%
+  </span>
+  <span class="absValue">
+    (1/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5%
+  </span>
+  <span class="absValue">
+    (1/20)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package models;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import org.hibernate.annotations.*;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import javax.persistence.*;
+<i class="no-highlight">6</i>&nbsp;import javax.persistence.Entity;
+<i class="no-highlight">7</i>&nbsp;import javax.persistence.Table;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;@FilterDefs({
+<i class="no-highlight">10</i>&nbsp;        @FilterDef(name = &quot;typeFilter&quot;, parameters = @ParamDef(name = &quot;typeParam&quot;, type = &quot;java.lang.String&quot;)),
+<i class="no-highlight">11</i>&nbsp;        @FilterDef(name = &quot;classFilter&quot;, parameters = @ParamDef(name = &quot;classParam&quot;, type = &quot;java.lang.String&quot;)),
+<i class="no-highlight">12</i>&nbsp;})
+<i class="no-highlight">13</i>&nbsp;@Filters({
+<i class="no-highlight">14</i>&nbsp;        @Filter(name = &quot;typeFilter&quot;, condition = &quot;type like :typeParam&quot;),
+<i class="no-highlight">15</i>&nbsp;        @Filter(name = &quot;classFilter&quot;, condition = &quot;class like :typeParam&quot;)
+<i class="no-highlight">16</i>&nbsp;})
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;@Entity
+<i class="no-highlight">19</i>&nbsp;@Table(name = &quot;Classification&quot;)
+<i class="no-highlight">20</i>&nbsp;public class Classification {
+<i class="no-highlight">21</i>&nbsp;    @Id
+<i class="no-highlight">22</i>&nbsp;    @GeneratedValue(strategy = GenerationType.AUTO)
+<i class="no-highlight">23</i>&nbsp;    @Column(name = &quot;class_id&quot;)
+<i class="no-highlight">24</i>&nbsp;    private Long id;
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Column(name = &quot;type&quot;)
+<i class="no-highlight">27</i>&nbsp;    private String type;
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    @Column(name = &quot;class&quot;)
+<i class="no-highlight">30</i>&nbsp;    private String class_;
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @Column(name = &quot;subclass&quot;)
+<i class="no-highlight">33</i>&nbsp;    private String subclass;
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    public Long getId() {
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        return id;</b>
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    public void setId(Long id) {
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        this.id = id;</b>
+<i class="no-highlight">41</i>&nbsp;    }
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    public String getType() {
+<b class="nc"><i class="no-highlight">44</i>&nbsp;        return type;</b>
+<i class="no-highlight">45</i>&nbsp;    }
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    public void setType(String type) {
+<b class="nc"><i class="no-highlight">48</i>&nbsp;        this.type = type;</b>
+<i class="no-highlight">49</i>&nbsp;    }
+<i class="no-highlight">50</i>&nbsp;
+<i class="no-highlight">51</i>&nbsp;    public String getClass_() {
+<b class="nc"><i class="no-highlight">52</i>&nbsp;        return class_;</b>
+<i class="no-highlight">53</i>&nbsp;    }
+<i class="no-highlight">54</i>&nbsp;
+<i class="no-highlight">55</i>&nbsp;    public void setClass_(String class_) {
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        this.class_ = class_;</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    public String getSubclass() {
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        return subclass;</b>
+<i class="no-highlight">61</i>&nbsp;    }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;    public void setSubclass(String subclass) {
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        this.subclass = subclass;</b>
+<i class="no-highlight">65</i>&nbsp;    }
+<i class="no-highlight">66</i>&nbsp;
+<b class="nc"><i class="no-highlight">67</i>&nbsp;    public Classification(Long id, String type, String class_, String subclass) {</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;        this.id = id;</b>
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        this.type = type;</b>
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        this.class_ = class_;</b>
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        this.subclass = subclass;</b>
+<i class="no-highlight">72</i>&nbsp;    }
+<i class="no-highlight">73</i>&nbsp;
+<b class="fc"><i class="no-highlight">74</i>&nbsp;    public Classification() {}</b>
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    @Override
+<i class="no-highlight">77</i>&nbsp;    public boolean equals(Object obj) {
+<b class="nc"><i class="no-highlight">78</i>&nbsp;        if (obj == null) { return false; }</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        if (obj.getClass() != this.getClass()) { return false; }</b>
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        final Classification other = (Classification) obj;</b>
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        return this.type.equals(other.type) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;                this.class_.equals(other.class_) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;                this.subclass.equals(other.subclass);</b>
+<i class="no-highlight">84</i>&nbsp;    }
+<i class="no-highlight">85</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-23 12:49</div>
+</div>
+</body>
+</html>

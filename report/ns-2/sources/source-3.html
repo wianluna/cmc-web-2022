@@ -1,0 +1,233 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MineralSpecies</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">models</a>
+</div>
+
+<h1>Coverage Summary for Class: MineralSpecies (models)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MineralSpecies</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,7%
+  </span>
+  <span class="absValue">
+    (1/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4%
+  </span>
+  <span class="absValue">
+    (1/25)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MineralSpecies$HibernateProxy$04GRiGZC</td>
+  </tr>
+  <tr>
+    <td class="name">MineralSpecies$HibernateProxy$aeQpjdqz</td>
+  </tr>
+  <tr>
+    <td class="name">MineralSpecies$HibernateProxy$b3627OTx</td>
+  </tr>
+  <tr>
+    <td class="name">MineralSpecies$HibernateProxy$OTEgLao0</td>
+  </tr>
+  <tr>
+    <td class="name">MineralSpecies$HibernateProxy$RXlA8fW7</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    7,7%
+  </span>
+  <span class="absValue">
+    (1/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4%
+  </span>
+  <span class="absValue">
+    (1/25)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package models;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import org.hibernate.annotations.*;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import javax.persistence.*;
+<i class="no-highlight">6</i>&nbsp;import javax.persistence.Entity;
+<i class="no-highlight">7</i>&nbsp;import javax.persistence.Table;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;//@FilterDefs({
+<i class="no-highlight">10</i>&nbsp;//        @FilterDef(name = &quot;mineralNameFilter&quot;,
+<i class="no-highlight">11</i>&nbsp;//                parameters = @ParamDef(name = &quot;nameParam&quot;, type = &quot;java.lang.String&quot;)),
+<i class="no-highlight">12</i>&nbsp;//        @FilterDef(name = &quot;mineralNameFilter&quot;,
+<i class="no-highlight">13</i>&nbsp;//                parameters = @ParamDef(name = &quot;nameParam&quot;, type = &quot;java.lang.String&quot;))
+<i class="no-highlight">14</i>&nbsp;//})
+<i class="no-highlight">15</i>&nbsp;//@Filters({
+<i class="no-highlight">16</i>&nbsp;//        @Filter(name = &quot;mineralNameFilter&quot;, condition=&quot;species_name like :nameParam&quot;),
+<i class="no-highlight">17</i>&nbsp;//        @Filter(name=&quot;mineralTypeFilter&quot;, condition=&quot;{c}.type like :typeParam&quot;, deduceAliasInjectionPoints = false,
+<i class="no-highlight">18</i>&nbsp;//                aliases={@SqlFragmentAlias(alias=&quot;c&quot;, table=&quot;classification&quot;)}),
+<i class="no-highlight">19</i>&nbsp;//        @Filter(name=&quot;mineralClassFilter&quot;, condition=&quot;{c}.class like :classParam&quot;, deduceAliasInjectionPoints = false,
+<i class="no-highlight">20</i>&nbsp;//                aliases={@SqlFragmentAlias(alias=&quot;c&quot;, table=&quot;classification&quot;)}),
+<i class="no-highlight">21</i>&nbsp;//        @Filter(name=&quot;mineralSubclassFilter&quot;, condition=&quot;{c}.subclass like :subclassParam&quot;, deduceAliasInjectionPoints = false,
+<i class="no-highlight">22</i>&nbsp;//                aliases={@SqlFragmentAlias(alias=&quot;c&quot;, table=&quot;classification&quot;)}),
+<i class="no-highlight">23</i>&nbsp;//})
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;@Entity
+<i class="no-highlight">26</i>&nbsp;@Table(name = &quot;Mineral_Species&quot;)
+<i class="no-highlight">27</i>&nbsp;public class MineralSpecies {
+<i class="no-highlight">28</i>&nbsp;    @Id
+<i class="no-highlight">29</i>&nbsp;    @GeneratedValue(strategy = GenerationType.AUTO)
+<i class="no-highlight">30</i>&nbsp;    @Column(name = &quot;species_id&quot;)
+<i class="no-highlight">31</i>&nbsp;    private Long id;
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    @Column(name = &quot;species_name&quot;)
+<i class="no-highlight">34</i>&nbsp;    private String speciesName;
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    @Column(name = &quot;chemical_formula&quot;)
+<i class="no-highlight">37</i>&nbsp;    private String chemicalFormula;
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    @Column(name = &quot;origin&quot;)
+<i class="no-highlight">40</i>&nbsp;    private String origin;
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    @Column(name = &quot;class_id&quot;)
+<i class="no-highlight">43</i>&nbsp;    private Long classId;
+<i class="no-highlight">44</i>&nbsp;
+<b class="fc"><i class="no-highlight">45</i>&nbsp;    public MineralSpecies() {}</b>
+<i class="no-highlight">46</i>&nbsp;
+<b class="nc"><i class="no-highlight">47</i>&nbsp;    public MineralSpecies(Long id, String speciesName, String chemicalFormula, String origin, Long classId) {</b>
+<b class="nc"><i class="no-highlight">48</i>&nbsp;        this.id = id;</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;        this.speciesName = speciesName;</b>
+<b class="nc"><i class="no-highlight">50</i>&nbsp;        this.chemicalFormula = chemicalFormula;</b>
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        this.origin = origin;</b>
+<b class="nc"><i class="no-highlight">52</i>&nbsp;        this.classId = classId;</b>
+<i class="no-highlight">53</i>&nbsp;    }
+<i class="no-highlight">54</i>&nbsp;
+<i class="no-highlight">55</i>&nbsp;    @Override
+<i class="no-highlight">56</i>&nbsp;    public boolean equals(Object obj) {
+<b class="nc"><i class="no-highlight">57</i>&nbsp;        if (obj == null) { return false; }</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;        if (obj.getClass() != this.getClass()) { return false; }</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;        final MineralSpecies other = (MineralSpecies) obj;</b>
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        return this.id.equals(other.id) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">61</i>&nbsp;                this.speciesName.equals(other.speciesName) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;                this.chemicalFormula.equals(other.chemicalFormula) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;                this.origin.equals(other.origin) &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;                this.classId.equals(other.classId);</b>
+<i class="no-highlight">65</i>&nbsp;    }
+<i class="no-highlight">66</i>&nbsp;
+<i class="no-highlight">67</i>&nbsp;    public Long getId() {
+<b class="nc"><i class="no-highlight">68</i>&nbsp;        return id;</b>
+<i class="no-highlight">69</i>&nbsp;    }
+<i class="no-highlight">70</i>&nbsp;
+<i class="no-highlight">71</i>&nbsp;    public void setId(Long id) {
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        this.id = id;</b>
+<i class="no-highlight">73</i>&nbsp;    }
+<i class="no-highlight">74</i>&nbsp;
+<i class="no-highlight">75</i>&nbsp;    public String getSpeciesName() {
+<b class="nc"><i class="no-highlight">76</i>&nbsp;        return speciesName;</b>
+<i class="no-highlight">77</i>&nbsp;    }
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;    public void setSpeciesName(String species_name) {
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        this.speciesName = species_name;</b>
+<i class="no-highlight">81</i>&nbsp;    }
+<i class="no-highlight">82</i>&nbsp;
+<i class="no-highlight">83</i>&nbsp;    public String getChemicalFormula() {
+<b class="nc"><i class="no-highlight">84</i>&nbsp;        return chemicalFormula;</b>
+<i class="no-highlight">85</i>&nbsp;    }
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;    public void setChemicalFormula(String chemical_formula) {
+<b class="nc"><i class="no-highlight">88</i>&nbsp;        this.chemicalFormula = chemical_formula;</b>
+<i class="no-highlight">89</i>&nbsp;    }
+<i class="no-highlight">90</i>&nbsp;
+<i class="no-highlight">91</i>&nbsp;    public String getOrigin() {
+<b class="nc"><i class="no-highlight">92</i>&nbsp;        return origin;</b>
+<i class="no-highlight">93</i>&nbsp;    }
+<i class="no-highlight">94</i>&nbsp;
+<i class="no-highlight">95</i>&nbsp;    public void setOrigin(String origin) {
+<b class="nc"><i class="no-highlight">96</i>&nbsp;        this.origin = origin;</b>
+<i class="no-highlight">97</i>&nbsp;    }
+<i class="no-highlight">98</i>&nbsp;
+<i class="no-highlight">99</i>&nbsp;    public Long getClassId() {
+<b class="nc"><i class="no-highlight">100</i>&nbsp;        return classId;</b>
+<i class="no-highlight">101</i>&nbsp;    }
+<i class="no-highlight">102</i>&nbsp;
+<i class="no-highlight">103</i>&nbsp;    public void setClassId(Long class_id) {
+<b class="nc"><i class="no-highlight">104</i>&nbsp;        this.classId = class_id;</b>
+<i class="no-highlight">105</i>&nbsp;    }
+<i class="no-highlight">106</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-23 12:49</div>
+</div>
+</body>
+</html>
